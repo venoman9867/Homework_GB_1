@@ -1,23 +1,44 @@
 package com.GeekBrains;
 
 public class Robot implements Runnable, Jumble {
-    private final int run;
-    private final double jump;
     private final String name;
+    private final double maxJump;
+    private final int maxRun;
+    private boolean isStopped = false;
 
     public Robot(String name, double jump, int run) {
-        this.name=name;
-        this.jump=jump;
-        this.run=run;
+        this.name = name;
+        this.maxJump = jump;
+        this.maxRun = run;
     }
 
     @Override
-    public void jump() {
-        System.out.println("Прыгнул");
+    public boolean jump(double height) {
+        if (height <= maxJump) {
+            System.out.println("Робот "+name + " Перепрыгнул");
+            return true;
+        } else {
+            System.out.println("Робот "+name+" не смог перепрыгнуть");
+            isStopped=true;
+        }
+        return false;
     }
 
     @Override
-    public void run() {
-        System.out.println("Пробежал");
+    public boolean run(int length) {
+        if (length<=maxRun){
+            System.out.println("Робот "+name+" Пробежал");
+            return true;
+        }else{
+            System.out.println("Робот "+name+" не мог пробежать");
+            isStopped=true;
+            return false;
+        }
+    }
+
+
+    @Override
+    public boolean isStopped() {
+        return isStopped;
     }
 }
