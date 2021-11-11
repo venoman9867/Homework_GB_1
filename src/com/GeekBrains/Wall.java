@@ -2,11 +2,11 @@ package com.GeekBrains;
 
 import java.util.Random;
 
-public class Wall {
-    private final double i;
+public class Wall implements Obstacles{
+    private final double height;
 
-    public Wall(double i) {
-        this.i=i;
+    public Wall(double height) {
+        this.height=height;
     }
 
     public void randomResult() {
@@ -18,6 +18,10 @@ public class Wall {
         }else{
             System.out.println("Участник не смог перепрыгнуть");
         }
+    }
+
+    public void accept(Jumble jumble) {
+        jumble.jump(height);
     }
 }
 

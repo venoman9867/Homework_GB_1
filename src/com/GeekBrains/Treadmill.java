@@ -2,11 +2,11 @@ package com.GeekBrains;
 
 import java.util.Random;
 
-public class Treadmill {
-    private final int i;
+public class Treadmill implements Obstacles{
+    private final int length;
 
-    public Treadmill(int i) {
-        this.i=i;
+    public Treadmill(int length) {
+        this.length=length;
     }
 
     public void randomResult() {
@@ -17,6 +17,12 @@ public class Treadmill {
             System.out.println("Участник пробежал");
         }else{
             System.out.println("Участник не смог пробежать");
+        }
+    }
+
+    public void accept(Runnable runnable) {
+         {
+            runnable.run(length);
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.GeekBrains;
 
-public interface Runnable {
-     public void run();
-     Object object();
+public interface Runnable extends Participant{
+      boolean run(int length);
 }
